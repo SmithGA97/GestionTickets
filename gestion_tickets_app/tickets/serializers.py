@@ -1,9 +1,10 @@
 from .models import Ticket
+from images.serializers import ImageSerializer
 from rest_framework import serializers
 from django.utils import timezone
 
 class TicketSerializer(serializers.ModelSerializer):
-
+    ticket = ImageSerializer(many=True, read_only=True)
     class Meta:
         model = Ticket
         fields = '__all__'
