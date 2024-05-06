@@ -12,3 +12,7 @@ class ImageCreateAPIViewset(
     serializer_class = ImageSerializer
     authentication_classes = [authentication.TokenAuthentication]
     permission_classes = (permissions.IsAuthenticated,)
+
+    def get_queryset(self):
+        queryset = Image.objects.filter(ticket_id__created_by=self.request.user)
+        return queryset

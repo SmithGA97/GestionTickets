@@ -5,7 +5,7 @@ from .models import Ticket
 
 
 class TicketSerializer(serializers.ModelSerializer):
-    ticket = ImageSerializer(many=True, read_only=True)
+    ticket_images = ImageSerializer(many=True, read_only=True)
 
     class Meta:
         model = Ticket

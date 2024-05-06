@@ -9,7 +9,7 @@ class Image(models.Model):
         on_delete=models.CASCADE,
         null=False,
         blank=False,
-        related_name="ticket",
+        related_name="ticket_images",
         verbose_name="ticket",
     )
     tittle = models.CharField()
