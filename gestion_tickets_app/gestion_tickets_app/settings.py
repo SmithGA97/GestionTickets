@@ -87,6 +87,14 @@ DATABASES = {
         "PASSWORD": "mypassword",
         "HOST": "127.0.0.1",
         "PORT": "5432",
+    },
+    "test": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "gestion_tickets_test",
+        "USER": "smithgarcia",
+        "PASSWORD": "mypassword",
+        "HOST": "127.0.0.1",
+        "PORT": "5432",
     }
 }
 
@@ -136,3 +144,5 @@ REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 10,
 }
+
+#DJANGO_SETTINGS_MODULE = 'gestion_tickets_app.settings'
