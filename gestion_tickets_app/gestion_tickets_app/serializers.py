@@ -1,3 +1,4 @@
+"""Serializer for the Token auth."""
 from rest_framework import serializers
 from django.contrib.auth import authenticate
 
@@ -15,6 +16,6 @@ class AuthTokenSerializer(serializers.Serializer):
         )
         if not user:
             raise serializers.ValidationError('No fue posible autenticarse')
-        
+
         attrs['user'] = user
         return attrs

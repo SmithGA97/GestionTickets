@@ -1,6 +1,6 @@
 from django.db import models
-from .enums import Status
 from django.contrib.auth.models import User
+from .enums import Status
 
 # Create your models here.
 

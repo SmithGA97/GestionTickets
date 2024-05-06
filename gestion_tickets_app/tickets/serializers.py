@@ -1,15 +1,14 @@
-from .models import Ticket
-from images.serializers import ImageSerializer
 from rest_framework import serializers
 from django.utils import timezone
+from images.serializers import ImageSerializer
+from .models import Ticket
 
 class TicketSerializer(serializers.ModelSerializer):
     ticket = ImageSerializer(many=True, read_only=True)
     class Meta:
         model = Ticket
         fields = '__all__'
-    
-    
+
     def create(self, validated_data):
         validated_data['creation_date'] = timezone.now()
         validated_data['created_by'] = self.context.get('request').user

@@ -1,6 +1,6 @@
+from rest_framework import serializers
 from .models import Image
 from .helpers import save_file_tpm
-from rest_framework import serializers
 from .tasks import cloudinary_process
 
 class ImageSerializer(serializers.ModelSerializer):
@@ -17,7 +17,7 @@ class ImageSerializer(serializers.ModelSerializer):
             ticket.increment_images_count()
         else:
             raise serializers.ValidationError(f'The maximum value of images to upload for the ticket {ticket.id} has been reached')
-        
+
         file_path = save_file_tpm(validated_data['image'])
         title = validated_data['tittle']
         folder = validated_data.get('folder')
@@ -26,7 +26,6 @@ class ImageSerializer(serializers.ModelSerializer):
         image = Image.objects.create(**validated_data)
         image_id = image.pk
         cloudinary_process.delay(file_path, image_id, title, folder)
-        
 
         if ticket.number_of_images > ticket.uploaded_images:
             ticket.status = 'IN_PROCESS'

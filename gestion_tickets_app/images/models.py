@@ -21,3 +21,5 @@ class Image(models.Model):
         null=True,
         blank=True
     )
+    def __str__(self) -> str:
+        return f'{self.tittle} of Ticket id ({self.ticket_id})'

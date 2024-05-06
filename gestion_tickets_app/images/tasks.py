@@ -1,7 +1,7 @@
+import os
 from celery import shared_task
 from .services import CloudDinaryService
 from .models import Image
-import os
 
 @shared_task()
 def cloudinary_process(file_path, image_id, title, folder):
@@ -12,6 +12,3 @@ def cloudinary_process(file_path, image_id, title, folder):
     image = Image.objects.get(pk=image_id)
     image.cloud_info = response
     image.save()
-
-    
-    
