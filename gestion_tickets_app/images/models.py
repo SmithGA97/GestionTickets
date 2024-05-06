@@ -16,6 +16,8 @@ class Image(models.Model):
         null=True,
         blank=True
     )
-    url_cloud = models.URLField(
-        verbose_name='url in cloud'
+    cloud_info = models.TextField(
+        verbose_name='Metadata in Cloud',
+        null=True,
+        blank=True
     )
